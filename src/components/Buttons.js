@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, Alert } from "react-native";
+import UserContext from "../context/userContext";
 
-const Buttons = ({ text, bgColor, font }) => {
+const Buttons = ({ value, bgColor, font, children }) => {
+  const { val, setVal } = useContext(UserContext);
+
   return (
-    <TouchableOpacity style={[styles.btn, { backgroundColor: bgColor }]}>
-      <Text style={{ fontSize: 20, color: font }}>{text}</Text>
+    <TouchableOpacity
+      onPress={() => {
+        console.log(value);
+      }}
+      style={[styles.btn, { backgroundColor: bgColor }]}
+    >
+      <Text style={{ fontSize: 20, color: font }}>{children}</Text>
     </TouchableOpacity>
   );
 };

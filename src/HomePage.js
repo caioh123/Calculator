@@ -1,37 +1,20 @@
-import React, { useState, useContext } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import Buttons from "./components/Buttons";
+import React, { useState } from "react";
+import { View, StyleSheet } from "react-native";
 import InputBar from "./InputBar";
+import ButtonPage from "./components/ButtonPage";
+import UserContext from "./context/UserContext";
 
 const Homepage = () => {
+  const [val, setVal] = useState("");
+
   return (
     <>
-      <View style={styles.container}>
-        <InputBar />
-        <View style={styles.btnContainer}>
-          <Buttons text="(" bgColor="grey" font="white" />
-          <Buttons text=")" bgColor="grey" font="white" />
-          <Buttons text="%" bgColor="grey" font="white" />
-          <Buttons text="AC" bgColor="grey" font="white" />
-          <Buttons text="7" bgColor="#fff" />
-          <Buttons text="8" bgColor="#fff" />
-          <Buttons text="9" bgColor="#fff" />
-          <Buttons text="+" bgColor="grey" font="white" />
-          <Buttons text="4" bgColor="#fff" />
-          <Buttons text="5" bgColor="#fff" />
-          <Buttons text="6" bgColor="#fff" />
-          <Buttons text="*" bgColor="grey" font="white" />
-          <Buttons text="1" bgColor="#fff" />
-          <Buttons text="2" bgColor="#fff" />
-          <Buttons text="3" bgColor="#fff" />
-          <Buttons text="-" bgColor="grey" font="white" />
-          <Buttons text="0" bgColor="#fff" />
-          <Buttons text="." bgColor="#fff" />
-          <Buttons text="=" bgColor="red" font="white" />
-          <Buttons text="+" bgColor="grey" font="white" />
+      <UserContext.Provider value={{ val, setVal }}>
+        <View style={styles.container}>
+          <InputBar />
+          <ButtonPage />
         </View>
-      </View>
-      <View />
+      </UserContext.Provider>
     </>
   );
 };
